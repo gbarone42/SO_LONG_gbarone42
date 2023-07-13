@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ghost_creator2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbarone <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/02 16:25:06 by gbarone           #+#    #+#             */
-/*   Updated: 2023/04/02 16:25:08 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/07/05 19:38:46 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,11 @@ void	ghost_render(t_game *game, t_vector *ghost)
 	x = ghost->x * 50;
 	y = ghost->y * 50;
 	if (game->frame <= u)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->g1, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->guardia1, x, y);
 	if (game->frame > u && game->frame <= u * 2)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->g2, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->guardia2, x, y);
 	if (game->frame > u * 2 && game->frame <= u * 3)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->g3, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->guardia3, x, y);
 	if (game->frame > u * 3)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->g4, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->guardia4, x, y);
 }

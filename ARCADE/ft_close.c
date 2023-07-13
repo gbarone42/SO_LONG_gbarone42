@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: barone <barone@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:51:03 by gbarone           #+#    #+#             */
-/*   Updated: 2023/03/15 23:03:19 by barone           ###   ########.fr       */
+/*   Updated: 2023/07/05 19:38:46 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void	ft_death(t_game *game)
 
 void	ft_close(t_game *game)
 {
-	mlx_clear_window(game->mlx, game->win);
+	mlx_clear_window(game->mlx, game->window);
 	game->f = 1;
 	if (!game->dead)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->f, 0, 0);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->win_game_banner, 0, 0);
 	else
-		mlx_put_image_to_window(game->mlx, game->win, game->images->l, 0, 0);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->endgame_lost, 0, 0);
 }

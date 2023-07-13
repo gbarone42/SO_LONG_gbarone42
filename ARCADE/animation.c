@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   animation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: barone <barone@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 16:46:05 by gbarone           #+#    #+#             */
-/*   Updated: 2023/03/15 23:03:25 by barone           ###   ########.fr       */
+/*   Updated: 2023/07/05 19:38:46 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	frame_updater(t_game *game)
 {
-	game->maxf = 105000 / ((game->w_h * game->w_w) / 1000);
+	game->maxf = 105000 / ((game->map_height * game->map_width) / 1000);
 	game->frame++;
 	if (game->frame > game->maxf)
 		game->frame = 1;
@@ -50,19 +50,19 @@ void	player_render(t_game *game)
 	x = game->pp->x * 50;
 	y = game->pp->y * 50;
 	if (game->frame <= u)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->p1, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->sb___one, x, y);
 	if (game->frame > u && game->frame <= u * 2)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->p2, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->sb2, x, y);
 	if (game->frame > u * 2 && game->frame <= u * 3)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->p3, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->sb3, x, y);
 	if (game->frame > u * 3 && game->frame <= u * 4)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->p4, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->sb4, x, y);
 	if (game->frame > u * 4 && game->frame <= u * 5)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->p5, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->sb5, x, y);
 	if (game->frame > u * 5 && game->frame <= u * 6)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->p6, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->sb6, x, y);
 	if (game->frame > u * 6)
-		mlx_put_image_to_window(game->mlx, game->win, game->images->p7, x, y);
+		mlx_put_image_to_window(game->mlx, game->window, game->images->sb7, x, y);
 }
 
 void	render(t_game *game)

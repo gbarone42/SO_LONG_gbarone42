@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sfree.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbarone <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 15:14:01 by gbarone           #+#    #+#             */
-/*   Updated: 2023/03/15 15:14:02 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/07/05 19:38:46 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	door_destroyer(t_images *i, void *m)
 {
-	mlx_destroy_image(m, i->e);
-	mlx_destroy_image(m, i->e1);
+	mlx_destroy_image(m, i->uscita);
+	mlx_destroy_image(m, i->airplane);
 	mlx_destroy_image(m, i->e2);
 	mlx_destroy_image(m, i->e3);
 	mlx_destroy_image(m, i->e4);
@@ -34,23 +34,23 @@ void	door_destroyer(t_images *i, void *m)
 void	image_destroyer(t_images *i, void *m)
 {
 	mlx_destroy_image(m, i->black);
-	mlx_destroy_image(m, i->c);
-	mlx_destroy_image(m, i->f);
-	mlx_destroy_image(m, i->g1);
-	mlx_destroy_image(m, i->g2);
-	mlx_destroy_image(m, i->g3);
-	mlx_destroy_image(m, i->g4);
-	mlx_destroy_image(m, i->l);
-	mlx_destroy_image(m, i->p1);
+	mlx_destroy_image(m, i->carburante);
+	mlx_destroy_image(m, i->win_game_banner);
+	mlx_destroy_image(m, i->guardia1);
+	mlx_destroy_image(m, i->guardia2);
+	mlx_destroy_image(m, i->guardia3);
+	mlx_destroy_image(m, i->guardia4);
+	mlx_destroy_image(m, i->endgame_lost);
+	mlx_destroy_image(m, i->sb___one);
 	mlx_destroy_image(m, i->p);
-	mlx_destroy_image(m, i->p2);
-	mlx_destroy_image(m, i->p3);
-	mlx_destroy_image(m, i->p4);
-	mlx_destroy_image(m, i->p5);
-	mlx_destroy_image(m, i->p6);
-	mlx_destroy_image(m, i->p7);
+	mlx_destroy_image(m, i->sb2);
+	mlx_destroy_image(m, i->sb3);
+	mlx_destroy_image(m, i->sb4);
+	mlx_destroy_image(m, i->sb5);
+	mlx_destroy_image(m, i->sb6);
+	mlx_destroy_image(m, i->sb7);
 	mlx_destroy_image(m, i->t);
-	mlx_destroy_image(m, i->w);
+	mlx_destroy_image(m, i->wall);
 	door_destroyer(i, m);
 }
 
@@ -84,6 +84,6 @@ int	sfree(t_game *game)
 	free(game->ghosts);
 	image_destroyer(game->images, game->mlx);
 	free(game->images);
-	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_window(game->mlx, game->window);
 	return (0);
 }

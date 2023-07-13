@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_generator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: barone <barone@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 18:55:41 by gbarone           #+#    #+#             */
-/*   Updated: 2023/03/20 23:49:53 by barone           ###   ########.fr       */
+/*   Updated: 2023/07/04 00:27:42 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ static int	aline_counter(char *av, t_game *game)
 	char	c;
 	int		c_read;
 	int		fd;
-	int		lines;
+	size_t		lines;
 
 	c_read = 1;
 	lines = 0;
-	fd = open(av, O_RDWR);
+	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		return 0;
 	while (c_read)
 	{
 		c_read = read(fd, &c, 1);
@@ -61,7 +63,7 @@ char	**map_generator(char *av, t_game *game)
 
 	i = 0;
 	lines = aline_counter(av, game); //calls aline_counter to get the number of lines in the file, then opens the file and reads it line by line using the get_next_line 
-	fd = open(av, O_RDWR);
+	fd = open(av, O_RDONLY);
 	map = malloc(sizeof(char *) * (lines + 1));
 	map[lines] = NULL;
 	while (i < lines)
@@ -69,9 +71,9 @@ char	**map_generator(char *av, t_game *game)
 		map[i] = get_next_line(fd);
 		i++;
 	}
-	game->map_lines = lines;
-	game->w_h = lines * 50;
-	game->w_w = w_counter(map[0]);
+	game->map_lines = lines; // The map_lines member of the game structure is updated with the total number of lines in the map.
+	game->map_height = lines * 50; //The w_h member of the game structure is set to the height of the map, calculated by multiplying the number of lines (lines) by 50.
+	game->map_width = w_counter(map[0]); //The w_w member of the game structure is set to the width of the map. It calls a hypothetical w_counter function to determine the width of the first line (map[0])
 	return (map);
 }
 /*

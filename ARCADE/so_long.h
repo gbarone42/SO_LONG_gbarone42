@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gbarone <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: gbarone <gbarone@student.42firenze.it>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 16:50:48 by gbarone           #+#    #+#             */
-/*   Updated: 2023/03/07 16:50:50 by gbarone          ###   ########.fr       */
+/*   Updated: 2023/07/05 19:38:46 by gbarone          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "mlx.h"
-# include "mlx_int.h"
+//# include "mlx_int.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h>
 
 typedef struct s_vector
 {
@@ -28,12 +29,12 @@ typedef struct s_vector
 typedef struct s_images
 {
 	void	*p;
-	void	*c;
-	void	*w;
+	void	*carburante;
+	void	*wall;
 	void	*t;
-	void	*e;
-	void	*f;
-	void	*e1;
+	void	*uscita;
+	void	*win_game_banner;
+	void	*airplane;
 	void	*e2;
 	void	*e3;
 	void	*e4;
@@ -47,18 +48,18 @@ typedef struct s_images
 	void	*e12;
 	void	*e13;
 	void	*e14;
-	void	*g4;
-	void	*g3;
-	void	*g2;
-	void	*g1;
-	void	*l;
-	void	*p1;
-	void	*p2;
-	void	*p3;
-	void	*p4;
-	void	*p5;
-	void	*p6;
-	void	*p7;
+	void	*guardia4;
+	void	*guardia3;
+	void	*guardia2;
+	void	*guardia1;
+	void	*endgame_lost;
+	void	*sb___one;
+	void	*sb2;
+	void	*sb3;
+	void	*sb4;
+	void	*sb5;
+	void	*sb6;
+	void	*sb7;
 	void	*black;
 }	t_images;
 
@@ -70,12 +71,12 @@ typedef struct s_game
 	void		*mlx;
 	t_vector	*pp;
 	t_vector	**ghosts;
-	void		*win;
+	void		*window;
 	int			coins;
 	t_images	*images;
 	int			g_n;
-	int			w_h;
-	int			w_w;
+	int			map_height;
+	int			map_width;
 	int			moved;
 	int			frame;
 	int			dead;
@@ -84,7 +85,7 @@ typedef struct s_game
 }	t_game;
 
 int			main(int ac, char **av);
-int			check_init(int ac, char **av, t_game *game);
+int			control_init(int ac, char **av, t_game *game);
 int			maps_check(char *av);
 int			line_counter(char *av);
 int			border_check(char **map, int lines);
